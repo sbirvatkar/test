@@ -1,4 +1,4 @@
-name : Test Commit
+name : Test Write Commit
 
 on: 
   push:
@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Run Contributors script
+      run: |
+          python t1.py
     - uses: EndBug/add-and-commit@v8
       with:
         default_author: github_actions
