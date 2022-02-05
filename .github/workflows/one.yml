@@ -1,16 +1,24 @@
 name : Test Commit
 
-on: pull_request
+on:
+  push:
+    branches:
+      - "main"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: EndBug/add-and-commit@v7
+    - uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        message: Show GitHub Actions logo
-        committer_name: GitHub Actions
-        committer_email: actions@github.com
+        # Optional, but recommended
+        # Defaults to "Apply automatic changes"
+        commit_message: Automated Change
+#     - uses: EndBug/add-and-commit@v7
+#       with:
+#         message: Show GitHub Actions logo
+#         committer_name: GitHub Actions
+#         committer_email: actions@github.com
         
 #     - uses: actions/checkout@v2
 #     - uses: EndBug/add-and-commit@v8
