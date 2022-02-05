@@ -3,7 +3,8 @@ name : Test Commit
 on:
   schedule:
     - cron : '*/5 * * * *'
-
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest
