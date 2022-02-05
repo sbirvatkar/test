@@ -1,6 +1,7 @@
 name : Test Commit
 
-on:
+on: 
+  push:
   workflow_dispatch:
   
 jobs:
