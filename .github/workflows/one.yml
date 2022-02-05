@@ -5,8 +5,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: EndBug/add-and-commit@v8
-        with:
-          default_author: github_actions
-          message : Updated latest push
+    - uses: EndBug/add-and-commit@v8
+      with:
+        message: Show GitHub Actions logo
+        committer_name: GitHub Actions
+        committer_email: actions@github.com
+        
+#     - uses: actions/checkout@v2
+#     - uses: EndBug/add-and-commit@v8
+#         with:
+#           default_author: github_actions
+#           message : Updated latest push
