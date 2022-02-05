@@ -29,5 +29,5 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           default_author: github_actor
-          commit_message: 'Update latest repository'
+          message: 'Update latest repository'
           signoff: true
