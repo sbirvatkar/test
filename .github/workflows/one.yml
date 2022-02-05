@@ -1,6 +1,8 @@
 name : Test Write Commit
 
-on: 
+on:
+  schedule:
+  - cron : '* * * * *'
   push:
   workflow_dispatch:
   
