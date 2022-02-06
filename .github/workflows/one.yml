@@ -12,6 +12,7 @@ jobs:
     - name: Run Contributors script
       run: |
           python t1.py
+          echo "New file" >> abc.txt
           echo "Wrote an thing here"
           
     - uses: EndBug/add-and-commit@v8
