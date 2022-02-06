@@ -5,13 +5,15 @@ on:
   workflow_dispatch:
   
 jobs:
-  build:
+  addrand:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Run Contributors script
       run: |
           python t1.py
+          echo "Wrote an thing here"
+          git status
     - uses: EndBug/add-and-commit@v8
       with:
         default_author: github_actions

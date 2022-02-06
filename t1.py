@@ -7,5 +7,9 @@ file1.write(str((n)) + "\n")
 file1.write("\n")
 file1.close()
 
-print(n)
+f = open("myfile.txt", "r")
+print(f.read())
+f.close()
+
+print("current one is ", n)
 print("Hello world ")
