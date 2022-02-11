@@ -13,7 +13,8 @@ jobs:
       env: 
         WEATHER_API: ${{ secrets.WEATHER_API }}
       run: |
-          echo env.WEATHER_API
+          python t1.py ${{ secrets.WEATHER_API }}
+          echo ${{ secrets.WEATHER_API }}
           echo "Wrote an thing here"
           
     - uses: EndBug/add-and-commit@v8
