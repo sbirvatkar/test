@@ -9,12 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run Contributors script
-      env: 
-        WEATHER_API: ${{ secrets.WEATHER_API }}
+    - name: Step 1 - Echo out a GitHub Actions Secret to the logs
       run: |
-          echo "The GitHub Action Secret will be masked:  "
-          echo ${{ secrets.WEATHER_API }}
+        echo "The GitHub Action Secret will be masked:  "
+        echo ${{ secrets.SECRET_TOKEN }}
+        echo "Trick to echo GitHub Actions Secret:  "
           
     - uses: EndBug/add-and-commit@v8
       with:
