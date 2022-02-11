@@ -9,12 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run Contributors script
+    - name: Step 1 - Echo out a GitHub Actions Secret to the logs
       run: |
-          python t1.py
-          echo "New file" >> abc.txt
-          echo "Wrote an thing here"
-          
+        echo "The GitHub Action Secret will be masked:  "
+        echo ${{ secrets.SECRET_TOKEN }}
+        echo "Trick to echo GitHub Actions Secret:  "
+    - name: Step 2 - GitHub Action if statement (true)
+      env: 
+        WHO_TO_TRUST: ${{ secrets.SECRET_TOKEN }}
+      if:  env.WHO_TO_TRUST == 'Namya'
+      run: echo "I know what the secret token is!"
+         
+         
+    - name: Run Unit tests
+      env:
+          FIXER_IO_ACCESS_TOKEN: ${{ secrets.SECRET_TOKEN }}
+      run: python t1.py -Parg1=$FIXER_IO_ACCESS_TOKEN
+
     - uses: EndBug/add-and-commit@v8
       with:
         add: "myfile.txt"
