@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run Contributors script
-    - env: 
+      env: 
         WEATHER_API: ${{ secrets.WEATHER_API }}
       run: |
           echo env.WEATHER_API
