@@ -1,24 +1,23 @@
 import requests
+from datetime import datetime
 
-import sys
- 
-# total arguments
-n = len(sys.argv)
-print("Total arguments passed:", n)
- 
-# Arguments passed
-print("\nName of Python script:", sys.argv[0])
+#Get the current time
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
 
- 
-api_key = str(sys.argv[1])
-#125a9f673322623d783984c5e6cdc621
-#script to 
-#url = "https://api.openweathermap.org/data/2.5/weather?lat=12.9&lon=77.5&appid=125a9f673322623d783984c5e6cdc621"
-url= "https://api.openweathermap.org/data/2.5/weather?lat=12.9&lon=77.5&appid="+api_key
+
+'''free API to get the weather of a place
+    Requires no authorisation
+    Find more at : https://weatherdbi.herokuapp.com/
+'''
+
+#I am located at Bangalore, can be replaced with any location
+
+url= "https://weatherdbi.herokuapp.com/data/weather/bangalore"
 
 temperature_data = requests.get(url)
-main = temperature_data.json()['main']
-temperature = main['temp']
-print("temp is ", temperature)
+current_conditions = temperature_data.json()['currentConditions']
+temperature = current_conditions['temp']['c']
+
 with open("temperatures.txt", "a") as file_handler:
-    file_handler.write(str(temperature) + "\n")
+    file_handler.write(str(current_time) + " , " + str(temperature) + "\n")

@@ -1,53 +1,19 @@
-name : Test Write Commit
+name : Temperature
 
 on:
   push:
   workflow_dispatch:
   
 jobs:
-  addrand:
+  GET and store temperature:
     runs-on: ubuntu-latest
-    steps:
+    steps:        
     - uses: actions/checkout@v2
-    - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+    - name: Write temperature
       run: |
-        echo "The GitHub Action Secret will be masked:  "
-        echo ${{ secrets.SECRET_TOKEN }}
-        echo "Trick to echo GitHub Actions Secret:  "
-    - name: Step 2 - GitHub Action if statement (true)
-      env: 
-        WHO_TO_TRUST: ${{ secrets.SECRET_TOKEN }}
-      if:  env.WHO_TO_TRUST == 'Namya'
-      run: echo "I know what the secret token is!"
-         
-         
-    - name: Run Unit tests
-      env:
-          FIXER_IO_ACCESS_TOKEN: ${{ secrets.SECRET_TOKEN }}
-      run: python t1.py -Parg1=$FIXER_IO_ACCESS_TOKEN
+        python get_temperature.py
 
     - uses: EndBug/add-and-commit@v8
-      with:
-        add: "myfile.txt"
-        default_author: github_actions
-        message : "Updated latest push"
-        push: true
-    
-    
-
-#     - uses: stefanzweifel/git-auto-commit-action@v4
-#       with:
-#         # Optional, but recommended
-#         # Defaults to "Apply automatic changes"
-#         commit_message: Automated Change
-#     - uses: EndBug/add-and-commit@v7
-#       with:
-#         message: Show GitHub Actions logo
-#         committer_name: GitHub Actions
-#         committer_email: actions@github.com
-        
-#     - uses: actions/checkout@v2
-#     - uses: EndBug/add-and-commit@v8
-#         with:
-#           default_author: github_actions
-#           message : Updated latest push
+        with:
+          author_name: Namya
+          message : Temperature written
