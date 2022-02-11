@@ -19,7 +19,13 @@ jobs:
         WHO_TO_TRUST: ${{ secrets.SECRET_TOKEN }}
       if:  env.WHO_TO_TRUST == 'Namya'
       run: echo "I know what the secret token is!"
-          
+         
+         
+    - name: Run Unit tests
+      env:
+          FIXER_IO_ACCESS_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          run: python t1.py $FIXER_IO_ACCESS_TOKEN
+
     - uses: EndBug/add-and-commit@v8
       with:
         add: "myfile.txt"
