@@ -4,8 +4,9 @@ name : Temperature
 #on the following events, the workflow is triggered
 on:
   # a cron job runs at scheduled intervals, here runs at the start of every hour
-  schedule:
-    - cron : '0 * * * *'
+  #uncomment this to run the cron job
+  #   schedule:
+  #     - cron : '0 * * * *'
   #writing this allows the user to manually run the workflow
   workflow_dispatch:
   
